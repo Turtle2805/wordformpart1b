@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyên Đề Word Formation Chuyên Anh - Ms Lê Hằng English</title>
+    <!-- Tích hợp Google Fonts tròn trịa phong cách Duolingo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Quicksand:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #A8E6CF, #DCEDC1, #FFD3B6, #FFAAA5, #FF8B94);
+            --correct-color: #00D26A;
+            --wrong-color: #FF4757;
+            --text-main: #2D3436;
+            --card-bg: rgba(255, 255, 255, 0.96);
+            --purple-accent: #8854C0;
+        }
+
+        body {
+            font-family: 'Quicksand', 'Nunito', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            color: var(--text-main);
+            background: var(--primary-gradient);
+            background-size: 400% 400%;
+            animation: loangMauNenChuyenDong 25s ease infinite;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes loangMauNenChuyenDong {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .pattern-overlay-layer {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.15;
+            mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><g fill='%23FFFFFF'><path d='M20,20 L26,32 L38,34 L29,42 L32,54 L20,47 L8,54 L11,42 L2,34 L14,32 Z'/><circle cx='120' cy='40' r='10'/><path d='M40,110 C40,98 60,92 80,104 C100,92 120,98 120,110 C120,122 40,122 40,110 Z' opacity='0.6'/><path d='M130,120 Q142,102 154,120 T166,120' stroke='%23FFFFFF' stroke-width='3' fill='none'/></g></svg>");
+            animation: movingBackgroundPattern 45s linear infinite;
+        }
+
+        @keyframes movingBackgroundPattern {
+            from { background-position: 0 0; }
+            to { background-position: 320px 640px; }
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.94);
+            padding: 8px 20px;
+            border-radius: 14px;
+            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.06);
+            margin-bottom: 20px;
+            border: 2px solid var(--purple-accent);
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 1rem;
+            color: var(--purple-accent);
+            margin: 0;
+            font-weight: 900;
+        }
+
+        .important-notice-box {
+            background: #FFF9E6;
+            border: 4px dashed #FDCB6E;
+            border-radius: 20px;
+            padding: 18px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 0 rgba(253, 203, 110, 0.2);
+            text-align: center;
+        }
+
+        .notice-title {
+            font-size: 1.15rem;
+            font-weight: 900;
+            color: #D35400;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .notice-content {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #2D3436;
+            font-weight: 700;
+        }
+
+        .section-title-banner {
+            background: #FFF;
+            padding: 12px 20px;
+            border-radius: 16px;
+            font-size: 1.15rem;
+            font-weight: 900;
+            color: var(--purple-accent);
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-left: 6px solid #E84393;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.04);
+        }
+
+        /* CARD TRẮC NGHIỆM */
+        .quiz-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 25px;
+            margin-bottom: 22px;
+            box-shadow: 0 10px 0 rgba(0, 0, 0, 0.05);
+            border: 3px solid #FFF;
+            position: relative;
+        }
+
+        .question-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 14px;
+        }
+
+        .question-number {
+            background: var(--purple-accent);
+            color: #FFF;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            margin-right: 12px;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 0 #6c3da3;
+            flex-shrink: 0;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-top: 2px;
+        }
+
+        .choices-grid {
+            display: flex;
+            flex-direction: column;
+            margin-top: 15px;
+        }
+
+        .choice-btn {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            background: #FFF;
+            border: 3px solid #E2E8F0;
+            border-radius: 18px;
+            padding: 12px 18px;
+            margin-bottom: 10px;
+            font-size: 1.02rem;
+            font-weight: 700;
+            text-align: left;
+            cursor: pointer;
+            font-family: inherit;
+            color: var(--text-main);
+            box-shadow: 0 6px 0 #E2E8F0;
+            transition: all 0.1s ease;
+        }
+
+        .choice-btn:hover:not(:disabled) {
+            transform: scale(1.01) translateY(-2px);
+            border-color: #B2BEC3;
+            box-shadow: 0 8px 0 #B2BEC3;
+        }
+
+        .choice-btn:active:not(:disabled) {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #B2BEC3;
+        }
+
+        .choice-prefix {
+            background: #F1F5F9;
+            border-radius: 10px;
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            margin-right: 12px;
+            color: #64748B;
+            flex-shrink: 0;
+        }
+
+        .choice-btn.correct-state {
+            background-color: #E6FBF1 !important;
+            border-color: var(--correct-color) !important;
+            box-shadow: 0 6px 0 #00A955 !important;
+            color: #006633 !important;
+        }
+
+        .choice-btn.correct-state .choice-prefix {
+            background-color: var(--correct-color) !important;
+            color: white !important;
+        }
+
+        .choice-btn.wrong-state {
+            background-color: #FFEBEB !important;
+            border-color: var(--wrong-color) !important;
+            box-shadow: 0 6px 0 #D63031 !important;
+            color: #99222A !important;
+        }
+
+        .choice-btn.wrong-state .choice-prefix {
+            background-color: var(--wrong-color) !important;
+            color: white !important;
+        }
+
+        .shake-animation {
+            animation: shakeEffect 0.4s ease-in-out;
+        }
+
+        @keyframes shakeEffect {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        /* KHUNG GIẢI THÍCH 4 BƯỚC */
+        .explanation-box {
+            margin-top: 18px;
+            background: #F8F9FA;
+            border-radius: 18px;
+            padding: 18px;
+            border-left: 6px solid var(--purple-accent);
+            display: none;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.04);
+        }
+
+        .explanation-title {
+            font-weight: 900;
+            color: var(--purple-accent);
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+        }
+
+        .explanation-step {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #4A5568;
+        }
+
+        .step-heading {
+            font-weight: 900;
+            color: #2D3748;
+            margin-bottom: 2px;
+        }
+
+        .footer-action-wrapper {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .submit-exam-btn {
+            background: #00D26A;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 16px 60px;
+            font-size: 1.3rem;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #00A955, 0 12px 25px rgba(0,0,0,0.12);
+            font-family: inherit;
+            transition: all 0.15s;
+        }
+
+        .submit-exam-btn:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 11px 0 #00A955, 0 15px 30px rgba(0,0,0,0.18);
+        }
+
+        .submit-exam-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #00A955;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.25s ease;
+        }
+
+        .modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .modal-body-card {
+            background: white;
+            border-radius: 28px;
+            max-width: 500px;
+            width: 90%;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border: 4px solid var(--purple-accent);
+            transform: scale(0.8);
+            transition: all 0.25s ease;
+        }
+
+        .modal-overlay.active .modal-body-card {
+            transform: scale(1);
+        }
+
+        .modal-header-title {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--purple-accent);
+            margin-bottom: 10px;
+        }
+
+        .modal-score-badge {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #00D26A;
+            margin: 15px 0;
+        }
+
+        .modal-comment-text {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #2D3436;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .modal-reload-btn {
+            background: var(--purple-accent);
+            color: white;
+            border: none;
+            border-radius: 18px;
+            padding: 12px 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 5px 0 #6c3da3;
+        }
+
+        #canvas-confetti-layer {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pattern-overlay-layer"></div>
+    <canvas id="canvas-confetti-layer"></canvas>
+
+    <div class="container">
+        <header>
+            <h1>Giáo viên tạo: Ms Lê Hằng English</h1>
+        </header>
+
+        <div class="important-notice-box">
+            <span class="notice-title">⚠️ LỜI NHẮC QUAN TRỌNG CỦA CÔ LÊ HẰNG ⚠️</span>
+            <span class="notice-content">
+                Mỗi câu hỏi Word Formation dưới đây đều được trích thẳng từ đề thi chuyên Anh thực tế.<br>
+                Hãy suy nghĩ thật kỹ về từ loại (Danh, Tính, Động, Trạng) cần điền trước khi bấm chọn nhé!
+            </span>
+        </div>
+
+        <div id="quiz-dynamic-render-target"></div>
+
+        <div class="footer-action-wrapper">
+            <button class="submit-exam-btn" onclick="processExamGrading()">🎉 NỘP BÀI KIỂM TRA 🎉</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="result-summary-popup">
+        <div class="modal-body-card">
+            <div class="modal-header-title">🏆 KẾT QUẢ ĐẠT ĐƯỢC 🏆</div>
+            <div class="modal-score-badge" id="score-counter-slot">0/0</div>
+            <div class="modal-comment-text" id="teacher-feedback-slot">Lời khuyên...</div>
+            <button class="modal-reload-btn" onclick="resetAndRestartQuiz()">THỬ SỨC LẠI</button>
+        </div>
+    </div>
+
+    <script>
+        const questionsDatabase = [
+            // CẦN THƠ (51 - 55)
+            {
+                id: 51,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Cần Thơ",
+                text: "My mother is a _______ (CARE) woman. She always takes care of us.",
+                choices: [
+                    { text: "caring (chu đáo, biết quan tâm)", key: "A" },
+                    { text: "careful (cẩn thận)", key: "B" },
+                    { text: "careless (cẩu thả)", key: "C" },
+                    { text: "care (sự chăm sóc)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Mẹ tôi là một người phụ nữ chu đáo. Bà ấy luôn chăm sóc chúng tôi.",
+                    step2: "Vị trí trống đứng trước danh từ 'woman' nên cần một tính từ bổ nghĩa.",
+                    step3: "Vế sau có thông tin 'always takes care of us' (luôn chăm sóc chúng tôi) bộc lộ tính cách chu đáo, yêu thương, do đó chọn tính từ 'caring'.",
+                    step4: "'careful' là cẩn thận tránh nguy hiểm; 'careless' mang nghĩa tiêu cực (cẩu thả); 'care' là danh từ/động từ không phù hợp."
+                }
+            },
+            {
+                id: 52,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Cần Thơ",
+                text: "We often take part in English writing _______ (COMPETE) at school.",
+                choices: [
+                    { text: "competitions (các cuộc thi)", key: "A" },
+                    { text: "competitive (mang tính cạnh tranh)", key: "B" },
+                    { text: "competitors (những người thi đấu)", key: "C" },
+                    { text: "competitiveness (tính cạnh tranh)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Chúng tôi thường tham gia vào các cuộc thi viết tiếng Anh ở trường.",
+                    step2: "Sau cụm danh từ 'English writing' cần một danh từ số nhiều để tạo thành cụm danh từ chỉ hoạt động, sự kiện số nhiều sau 'take part in'.",
+                    step3: "Từ gốc 'COMPETE' (thi đấu) chuyển thành danh từ chỉ cuộc thi số nhiều là 'competitions'.",
+                    step4: "'competitors' là thí sinh; 'competitive' là tính từ; 'competitiveness' là danh từ chỉ đặc tính cạnh tranh."
+                }
+            },
+            {
+                id: 53,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Cần Thơ",
+                text: "The _______ (COVER) of the internet was made in 20th century.",
+                choices: [
+                    { text: "discovery (sự khám phá, phát hiện)", key: "A" },
+                    { text: "coverage (việc đưa tin, phủ sóng)", key: "B" },
+                    { text: "discover (khám phá)", key: "C" },
+                    { text: "recovering (sự phục hồi)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Sự phát hiện/phát minh ra mạng Internet được thực hiện vào thế kỷ 20.",
+                    step2: "Đứng sau mạo từ 'The' và trước giới từ 'of' bắt buộc phải là một danh từ.",
+                    step3: "Mặc dù đề bài cho gốc từ gốc 'COVER', nhưng đây là một câu bẫy kinh điển của đề chuyên, gốc chuẩn phải hướng tới từ 'discover' -> danh từ 'discovery' để hợp ngữ cảnh lịch sử khoa học.",
+                    step4: "'coverage' là độ phủ sóng/đưa tin báo chí không phù hợp ngữ cảnh phát minh ra đời."
+                }
+            },
+            {
+                id: 54,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Cần Thơ",
+                text: "I shouted at the dog and it walked away _______ (OPPOINT).",
+                choices: [
+                    { text: "disappointedly (một cách thất vọng)", key: "A" },
+                    { text: "disappointed (bị thất vọng)", key: "B" },
+                    { text: "disappointing (gây thất vọng)", key: "C" },
+                    { text: "appointment (cuộc hẹn)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Tôi quát con chó và nó bỏ đi một cách đầy thất vọng.",
+                    step2: "Vị trí cuối câu bổ nghĩa cho động từ hành động 'walked away' nên cần một trạng từ (adverb).",
+                    step3: "Từ gốc 'OPPOINT' trong đề là lỗi đánh máy từ gốc gốc 'APPOINT/DISAPPOINT'. Ta biến đổi thành trạng từ 'disappointedly' để diễn tả trạng thái của con vật khi bỏ đi.",
+                    step4: "Các từ còn lại là tính từ hoặc danh từ không thể bổ nghĩa cho động từ hành động."
+                }
+            },
+            {
+                id: 55,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Cần Thơ",
+                text: "He lost both his house and his _______ (LIVE) because of the storm.",
+                choices: [
+                    { text: "livelihood (kế sinh nhai, nguồn sống)", key: "A" },
+                    { text: "living (cuộc sống)", key: "B" },
+                    { text: "liveliness (sự sống động)", key: "C" },
+                    { text: "alive (còn sống)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Anh ấy mất cả nhà cửa lẫn kế sinh nhai vì cơn bão dữ dội.",
+                    step2: "Sau tính từ sở hữu 'his' cần một danh từ chỉ tài sản, vật sở hữu tương đương với danh từ 'house'.",
+                    step3: "Từ gốc 'LIVE' biến đổi thành danh từ 'livelihood' mang ý nghĩa là nguồn sống, phương tiện kiếm sống của con người.",
+                    step4: "'living' thường dùng trong cụm 'earn a living'; 'liveliness' là sự hoạt bát sôi nổi không hợp ngữ cảnh mất mát do bão."
+                }
+            },
+
+            // ĐÀ NẴNG (56 - 60)
+            {
+                id: 56,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh TP. Đà Nẵng",
+                text: "The accident happened because he drove _______ (CARE).",
+                choices: [
+                    { text: "carelessly (một cách bất cẩn)", key: "A" },
+                    { text: "carefully (một cách cẩn thận)", key: "B" },
+                    { text: "careless (bất cẩn)", key: "C" },
+                    { text: "careful (cẩn thận)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Tai nạn xảy ra bởi vì anh ta lái xe một cách bất cẩn.",
+                    step2: "Đứng sau và bổ nghĩa cho động từ thường 'drove' phải là một trạng từ.",
+                    step3: "Vì kết quả dẫn đến tai nạn ('accident happened') nên trạng từ phải mang nghĩa tiêu cực: 'carelessly'.",
+                    step4: "'carefully' ngược nghĩa; 'careless' và 'careful' là tính từ."
+                }
+            },
+            {
+                id: 57,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh TP. Đà Nẵng",
+                text: "Air _______ (POLLUTE) is one of the problems that people have to deal with.",
+                choices: [
+                    { text: "pollution (sự ô nhiễm)", key: "A" },
+                    { text: "pollutant (chất gây ô nhiễm)", key: "B" },
+                    { text: "polluted (bị ô nhiễm)", key: "C" },
+                    { text: "polluting (gây ô nhiễm)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Ô nhiễm không khí là một trong những vấn đề con người phải đối mặt.",
+                    step2: "Đứng đầu câu làm chủ ngữ chính kết hợp với từ 'Air' tạo thành danh từ ghép chỉ hiện tượng.",
+                    step3: "Từ gốc 'POLLUTE' chuyển thành danh từ chỉ sự ô nhiễm là 'pollution'.",
+                    step4: "'pollutant' là chất gây ô nhiễm cụ thể (số ít); 'polluted' là tính từ phân từ."
+                }
+            },
+            {
+                id: 58,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh TP. Đà Nẵng",
+                text: "Traditional _______ (CELEBRATE) are a good source of fun and entertainment.",
+                choices: [
+                    { text: "celebrations (các lễ kỷ niệm, lễ hội)", key: "A" },
+                    { text: "celebration (lễ kỷ niệm số ít)", key: "B" },
+                    { text: "celebrities (những người nổi tiếng)", key: "C" },
+                    { text: "celebrated (nổi tiếng)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Các lễ hội truyền thống là nguồn đem lại niềm vui và sự giải trí lớn.",
+                    step2: "Vị trí trống làm chủ ngữ đứng trước động từ số nhiều 'are' nên cần danh từ số nhiều.",
+                    step3: "Từ gốc 'CELEBRATE' đổi thành danh từ số nhiều chỉ các ngày lễ, sự kiện kỷ niệm là 'celebrations'.",
+                    step4: "'celebrities' mang nghĩa là những ngôi sao nổi tiếng không phù hợp ngữ cảnh."
+                }
+            },
+            {
+                id: 59,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh TP. Đà Nẵng",
+                text: "You should buy this book. It’s very _______ (INFORM).",
+                choices: [
+                    { text: "informative (chứa nhiều thông tin hữu ích)", key: "A" },
+                    { text: "informed (có hiểu biết)", key: "B" },
+                    { text: "informational (thuộc về thông tin)", key: "C" },
+                    { text: "information (thông tin)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Bạn nên mua cuốn sách này. Nó rất hữu ích và chứa nhiều thông tin.",
+                    step2: "Đứng sau cấu trúc 'It's very...' cần một tính từ mang nghĩa khen ngợi giá trị của cuốn sách.",
+                    step3: "Tính từ dùng cho vật (cuốn sách) mang nghĩa giàu thông tin, bổ ích là 'informative'.",
+                    step4: "'informed' dùng cho người có kiến thức rộng; 'information' là danh từ."
+                }
+            },
+            {
+                id: 60,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh TP. Đà Nẵng",
+                text: "_______ , people eat sticky rice cakes at Tet. (TRADITION)",
+                choices: [
+                    { text: "Traditionally (Theo truyền thống)", key: "A" },
+                    { text: "Traditional (Mang tính truyền thống)", key: "B" },
+                    { text: "Tradition (Truyền thống)", key: "C" },
+                    { text: "Traditionalist (Người theo chủ nghĩa truyền thống)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Theo truyền thống, người ta ăn bánh chưng/bánh tét vào dịp Tết.",
+                    step2: "Vị trí đứng đầu câu, ngăn cách với mệnh đề chính bằng dấu phẩy cần một trạng từ chỉ phương thức hoặc bối cảnh.",
+                    step3: "Từ gốc danh từ 'TRADITION' chuyển sang trạng từ là 'Traditionally'.",
+                    step4: "'Traditional' là tính từ không thể đứng độc lập đầu câu có dấu phẩy bổ nghĩa cho cả câu."
+                }
+            },
+
+            // ĐỒNG NAI (61 - 75)
+            {
+                id: 61,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Đồng Nai",
+                text: "Young children should be well aware of their _______ (BEHAVE) manner.",
+                choices: [
+                    { text: "behavioral / behavioural (thuộc về hành vi)", key: "A" },
+                    { text: "behavior (hành vi)", key: "B" },
+                    { text: "behaved (đối xử)", key: "C" },
+                    { text: "behaviorally (về mặt hành vi)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Trẻ nhỏ nên nhận thức rõ về cách cư xử hành vi của mình.",
+                    step2: "Đứng trước danh từ 'manner' cần một tính từ đi kèm để bổ nghĩa tạo thành cụm từ.",
+                    step3: "Gốc từ 'BEHAVE' (cư xử) biến đổi thành tính từ thuật ngữ tâm lý giáo dục là 'behavioral' (hoặc cách viết Anh-Anh: 'behavioural').",
+                    step4: "'behavior' là danh từ nên không đứng trước danh từ 'manner' theo cách kết hợp này."
+                }
+            },
+            {
+                id: 62,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Đồng Nai",
+                text: "Please put the books back to where you took them. Don’t _______ (PLACE) any of them.",
+                choices: [
+                    { text: "misplace (để nhầm chỗ, thất lạc)", key: "A" },
+                    { text: "replace (thay thế)", key: "B" },
+                    { text: "displace (dịch chuyển)", key: "C" },
+                    { text: "placement (sự sắp đặt)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Xin vui lòng đặt sách lại vị trí cũ. Đừng để thất lạc chiếc nào nhé.",
+                    step2: "Sau trợ động từ phủ định mệnh lệnh 'Don't' cần một động từ nguyên mẫu mang nghĩa nhắc nhở bảo quản.",
+                    step3: "Thêm tiền tố phủ định/sai lệch 'mis-' vào trước gốc từ tạo thành động từ 'misplace' mang nghĩa để nhầm chỗ dẫn đến mất hoặc tìm không ra.",
+                    step4: "'replace' là thay thế không hợp ý dặn dò hoàn trả sách về chỗ cũ."
+                }
+            },
+            {
+                id: 63,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Đồng Nai",
+                text: "The _______ (FLY) are scheduled to take off at between 15:00 and 15:30.",
+                choices: [
+                    { text: "flights (các chuyến bay)", key: "A" },
+                    { text: "flight (chuyến bay số ít)", key: "B" },
+                    { text: "flyers (tờ rơi/hành khách bay)", key: "C" },
+                    { text: "flying (sự bay)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Các chuyến bay được lên lịch cất cánh trong khoảng từ 15h00 đến 15h30.",
+                    step2: "Đứng sau mạo từ 'The' và làm chủ ngữ trước động từ số nhiều 'are' nên bắt buộc phải là một danh từ số nhiều.",
+                    step3: "Gốc động từ 'FLY' chuyển thành danh từ số nhiều chỉ phương tiện chuyên chở hàng không là 'flights'.",
+                    step4: "Nếu chọn 'flight' số ít sẽ vi phạm quy tắc hòa hợp chủ vị với hệ từ số nhiều 'are'."
+                }
+            },
+            {
+                id: 64,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Đồng Nai",
+                text: "I’ve never met such a strong man. His energy seems _______ (EXHAUST).",
+                choices: [
+                    { text: "inexhaustible (vô tận, không thể cạn kiệt)", key: "A" },
+                    { text: "exhausted (kiệt sức)", key: "B" },
+                    { text: "exhausting (gây mệt mỏi)", key: "C" },
+                    { text: "exhaustive (thấu đáo, toàn diện)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Tôi chưa bao giờ gặp một người đàn ông khỏe như vậy. Năng lượng của anh ấy dường như là vô hạn.",
+                    step2: "Sau động từ liên kết 'seems' cần một tính từ bổ nghĩa cho danh từ chỉ nguồn lực 'energy'.",
+                    step3: "Kết hợp tiền tố phủ định 'in-' và hậu tố '-ible' vào gốc từ 'EXHAUST' tạo nên tính từ 'inexhaustible' mang nghĩa vô tận, dồi dào không bao giờ hết.",
+                    step4: "'exhausted' là kiệt sức (chỉ cảm giác của người); 'exhausting' là mệt mỏi (tính chất sự việc)."
+                }
+            },
+            {
+                id: 65,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Đồng Nai",
+                text: "Those rose bushes need protection. Spray them with _______ (INSECT).",
+                choices: [
+                    { text: "insecticide / insecticides (thuốc trừ sâu)", key: "A" },
+                    { text: "insect (côn trùng)", key: "B" },
+                    { text: "insecticidal (thuộc thuốc trừ sâu)", key: "C" },
+                    { text: "insectivorous (ăn sâu bọ)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Những bụi hoa hồng đó cần được bảo vệ. Hãy phun thuốc trừ sâu cho chúng.",
+                    step2: "Đứng sau giới từ 'with' cần một danh từ chỉ chất liệu, hóa chất dùng để phun xịt cây.",
+                    step3: "Từ gốc 'INSECT' kết hợp với hậu tố diệt trừ '-cide' để tạo ra danh từ chỉ thuốc diệt côn trùng, thuốc trừ sâu: 'insecticide'.",
+                    step4: "Không thể dùng danh từ 'insect' (côn trùng) vì không ai đi phun côn trùng lên cây để bảo vệ cây."
+                }
+            },
+            {
+                id: 66,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Đồng Nai",
+                text: "Don’t you know that your good result will make your parents _______ proud of you? (MEASURE)",
+                choices: [
+                    { text: "immeasurably (vô cùng, không kể xiết)", key: "A" },
+                    { text: "measurably (vừa phải, có thể đo được)", key: "B" },
+                    { text: "measurement (sự đo lường)", key: "C" },
+                    { text: "measureless (vô biên)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Con không biết rằng kết quả tốt của con sẽ khiến bố mẹ vô cùng tự hào về con sao?",
+                    step2: "Vị trí đứng trước bổ nghĩa cho một tính từ trạng thái cảm xúc 'proud' nên cần một trạng từ (adverb).",
+                    step3: "Biến đổi gốc từ bằng cách thêm tiền tố phủ định kết hợp hậu tố trạng từ tạo ra 'immeasurably' mang nghĩa ở mức độ cực kỳ lớn, không đo đếm hết được.",
+                    step4: "'measurement' là danh từ chỉ thông số số đo không đi vị trí này."
+                }
+            },
+            {
+                id: 67,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Đồng Nai",
+                text: "Be careful. You may be _______ to put all your eggs in one basket. (ADVICE)",
+                choices: [
+                    { text: "ill-advised (khờ dại, không khôn ngoan)", key: "A" },
+                    { text: "advisable (nên làm)", key: "B" },
+                    { text: "inadvisable (không nên làm)", key: "C" },
+                    { text: "advisedly (một cách thận trọng)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Hãy cẩn thận. Con có thể là dại dột nếu bỏ tất cả trứng vào cùng một giỏ. (Thành ngữ chỉ việc liều lĩnh dồn hết vốn liếng vào một nơi).",
+                    step2: "Sau cấu trúc bị động 'may be' cần một tính từ mang nghĩa cảnh báo hành vi.",
+                    step3: "Từ ghép 'ill-advised' mang nghĩa là không khôn ngoan, khờ dại, rất hợp với lời khuyên phòng ngừa 'Be careful'.",
+                    step4: "'advisable' mang nghĩa tích cực khuyên nên làm, mâu thuẫn hoàn toàn với thành ngữ rủi ro phía sau."
+                }
+            },
+            {
+                id: 68,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Đồng Nai",
+                text: "The boy watched the performance of the tigers, _______ with amazement. (BREATHE)",
+                choices: [
+                    { text: "breathless (nín thở, hấp dẫn)", key: "A" },
+                    { text: "breathlessly (một cách nín thở)", key: "B" },
+                    { text: "breathing (sự thở)", key: "C" },
+                    { text: "breath (hơi thở)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Cậu bé xem màn biểu diễn của những chú hổ, nín thở vì kinh ngạc.",
+                    step2: "Cụm tính từ đứng độc lập ngăn cách dấu phẩy dùng để bổ nghĩa, mô tả trạng thái cơ thể của chủ ngữ 'The boy' lúc đó.",
+                    step3: "Cụm cố định: 'breathless with amazement/excitement' (nín thở vì kinh ngạc/hào hứng). Do đó chọn tính từ 'breathless'.",
+                    step4: "'breathlessly' là trạng từ bổ nghĩa hành động, ở đây cấu trúc dùng tính từ dạng rút gọn mệnh đề quan hệ sẽ tự nhiên và chuẩn xác hơn."
+                }
+            },
+            {
+                id: 69,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Đồng Nai",
+                text: "I would like to express my admiration for his _______ of knowledge. (PROFOUND)",
+                choices: [
+                    { text: "profundity (sự uyên thâm, sâu sắc)", key: "A" },
+                    { text: "profoundness (độ sâu sắc)", key: "B" },
+                    { text: "profoundly (một cách sâu sắc)", key: "C" },
+                    { text: "profound (sâu sắc)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Tôi muốn bày tỏ sự ngưỡng mộ của mình đối với sự uyên thâm về mặt kiến thức của anh ấy.",
+                    step2: "Đứng sau tính từ sở hữu 'his' và đứng trước giới từ 'of' bắt buộc phải là một danh từ.",
+                    step3: "Danh từ danh giá, chuẩn học thuật của tính từ 'profound' là 'profundity' (sự sâu sắc, thông thái uyên bác).",
+                    step4: "Mặc dù 'profoundness' có tồn tại nhưng 'profundity' mới là dạng từ ưu tiên số một trong các đề thi chuyên Anh."
+                }
+            },
+            {
+                id: 70,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Đồng Nai",
+                text: "The cancellation of the case resulted from the _______ in court of the defendant. (APPEARED)",
+                choices: [
+                    { text: "non-appearance (sự vắng mặt)", key: "A" },
+                    { text: "appearance (sự xuất hiện)", key: "B" },
+                    { text: "disappearance (sự biến mất)", key: "C" },
+                    { text: "reappearance (sự xuất hiện lại)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Việc hủy bỏ vụ án là do sự vắng mặt trước tòa của bị cáo.",
+                    step2: "Sau mạo từ 'the' cần một danh từ chỉ nguyên nhân dẫn tới việc hủy bỏ vụ án kiện tụng.",
+                    step3: "Vụ án bị hủy vì bị cáo không tới tòa, hành vi vắng mặt trong thuật ngữ pháp lý là 'non-appearance'.",
+                    step4: "'disappearance' là sự mất tích bí ẩn không dùng cho việc vắng mặt tại phiên tòa chính thức."
+                }
+            },
+            {
+                id: 71,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Đồng Nai",
+                text: "The _______ of the Ministry of Education announced the date of the graduation exam. (SPEAK)",
+                choices: [
+                    { text: "spokesman / spokesperson (người phát ngôn)", key: "A" },
+                    { text: "speaker (cái loa/diễn giả)", key: "B" },
+                    { text: "speech (bài phát biểu)", key: "C" },
+                    { text: "speaking (việc nói)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Người phát ngôn của Bộ Giáo dục đã công bố ngày thi tốt nghiệp.",
+                    step2: "Đứng đầu câu sau mạo từ 'The' làm chủ ngữ thực hiện hành động thông báo ('announced') nên phải là danh từ chỉ người có chức vụ.",
+                    step3: "Từ gốc 'SPEAK' chuyển thành danh từ chỉ người đại diện phát ngôn cơ quan là 'spokesman' hoặc 'spokesperson'.",
+                    step4: "'speaker' là diễn giả công chúng hoặc chiếc loa thùng không thích hợp văn cảnh hành chính."
+                }
+            },
+            {
+                id: 72,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Đồng Nai",
+                text: "Mercedes is a very _______ car. (DEPEND)",
+                choices: [
+                    { text: "dependable (đáng tin cậy, bền bỉ)", key: "A" },
+                    { text: "dependent (phụ thuộc)", key: "B" },
+                    { text: "independent (độc lập)", key: "C" },
+                    { text: "dependability (tính đáng tin)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Mercedes là một dòng xe ô tô rất đáng tin cậy và bền bỉ.",
+                    step2: "Đứng trước danh từ 'car' cần điền một tính từ mang nghĩa ca ngợi chất lượng xe.",
+                    step3: "Tính từ mang ý nghĩa có thể dựa dẫm, máy móc chạy tốt, đáng tin cậy là 'dependable'.",
+                    step4: "'dependent' mang nghĩa tiêu cực là phụ thuộc ăn bám không dùng ca ngợi đồ vật cơ khí xe cộ."
+                }
+            },
+            {
+                id: 73,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Đồng Nai",
+                text: "There should be _______ staff in case someone is absent and needs to be replaced. (STAND)",
+                choices: [
+                    { text: "standby (dự phòng, sẵn sàng ứng cứu)", key: "A" },
+                    { text: "standing (vị thế, đang đứng)", key: "B" },
+                    { text: "standard (tiêu chuẩn)", key: "C" },
+                    { text: "standstill (sự bế tắc)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Nên có nhân viên dự phòng trong trường hợp có ai đó vắng mặt và cần được thay thế.",
+                    step2: "Vị trí đứng trước danh từ tập hợp 'staff' cần một tính từ/danh từ đóng vai trò bổ ngữ chỉ tính chất nhân sự dự phòng.",
+                    step3: "Thuật ngữ nhân sự trực chiến, dự phòng thay thế ngay lập tức là 'standby', tạo thành cụm 'standby staff'.",
+                    step4: "'standard' là tiêu chuẩn; 'standstill' là sự ngừng lại nghẽn mạch giao thông."
+                }
+            },
+            {
+                id: 74,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Đồng Nai",
+                text: "You’ll be punished for all your _______ (DO)",
+                choices: [
+                    { text: "misdoings / wrongdoings (những hành vi sai trái)", key: "A" },
+                    { text: "doings (các hoạt động)", key: "B" },
+                    { text: "deeds (hành động)", key: "C" },
+                    { text: "doer (người làm)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Cậu sẽ bị trừng phạt vì tất cả những hành vi sai trái lỗi lầm của mình.",
+                    step2: "Đứng sau tính từ định lượng 'all your' cần một danh từ số nhiều mang nghĩa tội lỗi, việc xấu vì đi với động từ bị phạt 'punished'.",
+                    step3: "Kết hợp tiền tố lỗi và gốc động từ tạo ra danh từ số nhiều gánh tội lỗi: 'misdoings' hoặc 'wrongdoings'.",
+                    step4: "'doings' đơn thuần là các sự kiện việc làm trung tính không mang sắc thái đáng bị phạt."
+                }
+            },
+            {
+                id: 75,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Đồng Nai",
+                text: "With all the modern facilities, doing housework is still very _______ (CONSUME)",
+                choices: [
+                    { text: "time-consuming (tốn thời gian)", key: "A" },
+                    { text: "consuming (tiêu thụ)", key: "B" },
+                    { text: "consumerism (chủ nghĩa tiêu dùng)", key: "C" },
+                    { text: "consumed (bị tiêu thụ)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Dù có tất cả các trang thiết bị hiện đại, việc làm việc nhà vẫn rất tốn thời gian.",
+                    step2: "Sau trạng từ nhấn mạnh mức độ 'very' cần một tính từ chỉ đặc tính phiền toái của việc nhà.",
+                    step3: "Tính từ ghép kinh điển chỉ tính chất ngốn, đốt nhiều thì giờ của con người là 'time-consuming'.",
+                    step4: "Một mình tính từ 'consuming' đơn lẻ không lột tả được bản chất hao tổn thời gian của việc dọn dẹp."
+                }
+            },
+
+            // NAM ĐỊNH (76 - 80)
+            {
+                id: 76,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Nam Định",
+                text: "Robbers broke into art gallery and took away many _______ paintings. (VALUE)",
+                choices: [
+                    { text: "valuable (vô cùng giá trị, đắt tiền)", key: "A" },
+                    { text: "valueless (không có giá trị, rẻ rách)", key: "B" },
+                    { text: "value (giá trị)", key: "C" },
+                    { text: "evaluation (sự đánh giá)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Kẻ trộm đã đột nhập vào triển lãm nghệ thuật và lấy đi nhiều bức tranh quý giá.",
+                    step2: "Đứng trước danh từ số nhiều 'paintings' làm nhiệm vụ bổ ngữ cần một tính từ.",
+                    step3: "Kẻ trộm đột nhập triển lãm tranh để lấy những bức đắt tiền, có giá trị cao, chọn tính từ 'valuable'.",
+                    step4: "'valueless' mang nghĩa là đồ bỏ đi, không có một xu giá trị nào, trộm sẽ không lấy."
+                }
+            },
+            {
+                id: 77,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Nam Định",
+                text: "George and I have been friends since _______ (CHILD). He used to live next door.",
+                choices: [
+                    { text: "childhood (thời thơ ấu)", key: "A" },
+                    { text: "childish (ích kỷ như trẻ con)", key: "B" },
+                    { text: "childless (vô sinh, không có con)", key: "C" },
+                    { text: "childlike (ngây thơ như trẻ con)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: George và tôi đã là bạn bè của nhau kể từ thời thơ ấu. Cậu ấy từng sống sát vách nhà tôi.",
+                    step2: "Sau liên từ mốc thời gian 'since' cần một danh từ chỉ thời kỳ, giai đoạn cuộc đời.",
+                    step3: "Từ gốc 'CHILD' thêm hậu tố chỉ thời kỳ '-hood' tạo thành danh từ 'childhood' (tuổi thơ).",
+                    step4: "Các từ còn lại đều là tính từ mang sắc thái tính cách hoặc trạng thái sinh học."
+                }
+            },
+            {
+                id: 78,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Nam Định",
+                text: "John lost his job because he often behaved _______ towards his customers. (POLITE)",
+                choices: [
+                    { text: "impolitely (một cách vô lễ, bất lịch sự)", key: "A" },
+                    { text: "politely (một cách lịch sự)", key: "B" },
+                    { text: "politeness (sự lịch sự)", key: "C" },
+                    { text: "impolite (bất lịch sự)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: John bị mất việc bởi vì anh ta thường xuyên cư xử bất lịch sự với khách hàng.",
+                    step2: "Bổ nghĩa cho động từ hành vi 'behaved' cần điền một trạng từ (adverb).",
+                    step3: "Hành vi khiến bị đuổi việc ('lost his job') phải là hành vi xấu vô lễ, chọn trạng từ có tiền tố phủ định: 'impolitely'.",
+                    step4: "'politely' trái nghĩa; 'impolite' là tính từ không đứng vị trí bổ nghĩa động từ thường."
+                }
+            },
+            {
+                id: 79,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Nam Định",
+                text: "Peter fell off the ladder, but his _______ (INJURE) were not very serious.",
+                choices: [
+                    { text: "injuries (các vết thương)", key: "A" },
+                    { text: "injury (vết thương số ít)", key: "B" },
+                    { text: "injured (bị thương)", key: "C" },
+                    { text: "injurious (có hại)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Peter bị ngã khỏi thang, nhưng các vết thương của anh ấy không quá nghiêm trọng.",
+                    step2: "Sau tính từ sở hữu 'his' và đứng làm chủ ngữ trước động từ số nhiều 'were' cần một danh từ số nhiều.",
+                    step3: "Từ gốc dạng động từ 'INJURE' đổi thành danh từ số nhiều chỉ tổn thương thể xác là 'injuries'.",
+                    step4: "Nếu chọn danh từ số ít 'injury' sẽ bị lỗi nghiêm trọng về sự hòa hợp với tobe số nhiều 'were'."
+                }
+            },
+            {
+                id: 80,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Nam Định",
+                text: "Hoang Anh was _______ to apply for the job. (COURAGE)",
+                choices: [
+                    { text: "encouraged (được khuyến khích, động viên)", key: "A" },
+                    { text: "courageous (dũng cảm)", key: "B" },
+                    { text: "discouraged (bị nản lòng)", key: "C" },
+                    { text: "encouragement (sự động viên)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Hoàng Anh đã được khuyến khích, động viên nộp đơn ứng tuyển cho công việc đó.",
+                    step2: "Cấu trúc câu 'was + ... + to-V' chỉ hành động được tác động từ bên ngoài theo thể bị động.",
+                    step3: "Biến đổi gốc từ danh từ tinh thần 'COURAGE' thành động từ thêm tiền tố và chuyển sang dạng bị động quá khứ: 'encouraged' (được ai đó tiếp thêm động lực để làm gì).",
+                    step4: "'courageous' là tính từ dũng cảm không đi liền cấu trúc câu bị động tự nhiên này."
+                }
+            },
+
+            // QUẢNG NGÃI (81 - 85)
+            {
+                id: 81,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Quảng Ngãi",
+                text: "In some countries, black people do not have _______ with white people. (EQUAL)",
+                choices: [
+                    { text: "equality (sự bình đẳng)", key: "A" },
+                    { text: "equal (ngang bằng)", key: "B" },
+                    { text: "equally (một cách bình đẳng)", key: "C" },
+                    { text: "inequality (sự bất bình đẳng)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Ở một số quốc gia, người da đen không có sự bình đẳng với người da trắng.",
+                    step2: "Đứng sau động từ sở hữu tác động 'do not have' cần một danh từ đóng vai trò tân ngữ.",
+                    step3: "Từ gốc tính từ 'EQUAL' chuyển thành danh từ chỉ quyền lợi bình đẳng xã hội là 'equality'.",
+                    step4: "Do câu đã có từ phủ định 'do not' nên ta dùng danh từ khẳng định 'equality' để câu mang nghĩa là 'không có sự bình đẳng'."
+                }
+            },
+            {
+                id: 82,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Quảng Ngãi",
+                text: "We should learn all the new words by heart to _______ our vocabulary. (RICH)",
+                choices: [
+                    { text: "enrich (làm giàu, làm phong phú)", key: "A" },
+                    { text: "richness (sự giàu có)", key: "B" },
+                    { text: "richly (một cách giàu có)", key: "C" },
+                    { text: "riches (tài sản của cải)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Chúng ta nên học thuộc lòng tất cả các từ mới để làm phong phú vốn từ vựng của mình.",
+                    step2: "Sau giới từ chỉ mục đích 'to' cần một động từ nguyên mẫu (V-bare).",
+                    step3: "Thêm tiền tố hóa động từ 'en-' vào trước tính từ 'RICH' tạo thành động từ 'enrich' (làm cho giàu lên, phong phú lên).",
+                    step4: "'richness' và 'riches' là danh từ không thể đứng sau chỉ mục đích động từ trực tiếp."
+                }
+            },
+            {
+                id: 83,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Quảng Ngãi",
+                text: "He is normally very _______ , so you will be lucky if you get any information out of him. (COMMUNICATE)",
+                choices: [
+                    { text: "uncommunicative (ít nói, không chịu chia sẻ thông tin)", key: "A" },
+                    { text: "communicative (cởi mở, thích giao tiếp)", key: "B" },
+                    { text: "communication (sự giao tiếp)", key: "C" },
+                    { text: "communicable (có thể lây lan bệnh)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Bình thường anh ta rất ít nói, vì vậy bạn sẽ may mắn lắm nếu khai thác được chút thông tin từ anh ta.",
+                    step2: "Sau phó từ chỉ mức độ 'very' cần một tính từ chỉ nét tính cách của người.",
+                    step3: "Mệnh đề sau nhấn mạnh 'lucky if you get any information' (phải may mắn lắm mới cạy được răng lấy thông tin) chứng tỏ anh ta vô cùng kín tiếng, ít nói -> chọn tính từ phủ định 'uncommunicative'.",
+                    step4: "'communicative' mang nghĩa trái ngược hoàn toàn ngữ cảnh."
+                }
+            },
+            {
+                id: 84,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Quảng Ngãi",
+                text: "_______ is a big problem for the government to solve nowadays. (FOREST)",
+                choices: [
+                    { text: "Deforestation (Nạn phá rừng)", key: "A" },
+                    { text: "Reforestation (Việc trồng rừng lại)", key: "B" },
+                    { text: "Forester (Người làm lâm nghiệp)", key: "C" },
+                    { text: "Forestry (Ngành lâm nghiệp)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Nạn phá rừng là một vấn đề lớn đối với chính phủ cần giải quyết ngày nay.",
+                    step2: "Vị trí đứng đầu câu làm chủ ngữ chính kết hợp bổ ngữ là một 'big problem' (vấn nạn tiêu cực) nên cần danh từ mang nghĩa tiêu cực.",
+                    step3: "Thêm tiền tố hủy hoại 'de-' kết hợp hậu tố danh từ hóa tạo ra 'Deforestation' (nạn tàn phá rừng).",
+                    step4: "'Reforestation' mang nghĩa tích cực trồng lại rừng nên không thể coi là vấn nạn đau đầu."
+                }
+            },
+            {
+                id: 85,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Quảng Ngãi",
+                text: "My younger brother can’t express himself very well in writing. I think young boys and girls have to learn to write _______ . (EFFECT)",
+                choices: [
+                    { text: "effectively (một cách hiệu quả)", key: "A" },
+                    { text: "effective (hiệu quả)", key: "B" },
+                    { text: "effectiveness (tính hiệu quả)", key: "C" },
+                    { text: "ineffectively (không hiệu quả)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Em trai tôi không thể diễn đạt tốt khi viết. Tôi nghĩ các bạn trẻ cần phải học cách viết một cách hiệu quả.",
+                    step2: "Đứng cuối câu bổ nghĩa cho động từ hành động 'write' nên cần điền một trạng từ.",
+                    step3: "Lời khuyên định hướng nâng cao năng lực học tập ('learn to write') phải hướng tới trạng từ tích cực: 'effectively'.",
+                    step4: "'effective' là tính từ; 'ineffectively' mang nghĩa tiêu cực sai mục đích khuyên răn."
+                }
+            },
+
+            // NGHỆ AN (86 - 95)
+            {
+                id: 86,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Nghệ An",
+                text: "His tour was cut _______ short due to his illness. (APPOINT)",
+                choices: [
+                    { text: "disappointingly (một cách đáng thất vọng)", key: "A" },
+                    { text: "appointment (cuộc hẹn)", key: "B" },
+                    { text: "disappointed (bị thất vọng)", key: "C" },
+                    { text: "disappointing (gây thất vọng)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Chuyến du lịch của anh ấy đã bị rút ngắn một cách đáng thất vọng do anh ấy bị bệnh.",
+                    step2: "Vị trí đứng chen giữa cụm động từ trạng thái 'cut... short' cần một trạng từ bổ trợ mức độ cảm xúc.",
+                    step3: "Từ gốc 'APPOINT' chuyển sang trạng từ mang sắc thái buồn bã thất vọng vì sự cố là 'disappointingly'.",
+                    step4: "Các từ còn lại không có hình thái trạng từ đuôi '-ly' để đứng vị trí này."
+                }
+            },
+            {
+                id: 87,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Nghệ An",
+                text: "Since the city center became a(n) _______ pedestrian area, shopping has been a more pleasant experience. (TRAFFIC)",
+                choices: [
+                    { text: "traffic-free (không có phương tiện giao thông)", key: "A" },
+                    { text: "traffic-jam (sự tắc đường)", key: "B" },
+                    { text: "trafficking (nạn buôn lậu)", key: "C" },
+                    { text: "untrafficked (ít người qua lại)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Kể từ khi trung tâm thành phố trở thành khu vực đi bộ không có phương tiện giao thông, việc mua sắm đã trở thành trải nghiệm dễ chịu hơn.",
+                    step2: "Đứng trước cụm danh từ 'pedestrian area' (khu phố đi bộ) cần một tính từ ghép mô tả tính chất của khu phố.",
+                    step3: "Hậu tố '-free' mang nghĩa là không có cái gì độc hại nguy hiểm. Cụm 'traffic-free' nghĩa là cấm các loại xe đi lại, chỉ dành cho người đi bộ.",
+                    step4: "'traffic-jam' là danh từ tắc đường không thể đứng vị trí tính từ ghép này."
+                }
+            },
+            {
+                id: 88,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Nghệ An",
+                text: "I’ve _______ the CNN homepage as I use it regularly to get the latest news. (MARK)",
+                choices: [
+                    { text: "bookmarked (đã đánh dấu trang web, lưu dấu)", key: "A" },
+                    { text: "marked (đã đánh dấu bằng mực)", key: "B" },
+                    { text: "marketed (đã tiếp thị quảng bá)", key: "C" },
+                    { text: "marketplace (chợ trên mạng)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Tôi đã lưu dấu/đánh dấu trang chủ của CNN vì tôi sử dụng nó thường xuyên để cập nhật tin tức mới nhất.",
+                    step2: "Sau cấu trúc thì hiện tại hoàn thành 'I’ve' (I have) cần một động từ chia ở dạng phân từ hai (V3/ed).",
+                    step3: "Thuật ngữ tin học công nghệ chỉ hành động lưu lại đường link trang web yêu thích trên trình duyệt là động từ ghép 'bookmark' -> phân từ hai 'bookmarked'.",
+                    step4: "Chỉ dùng 'marked' đơn thuần mang nghĩa là vạch mực hoặc chấm điểm không đúng bản chất thao tác máy tính."
+                }
+            },
+            {
+                id: 89,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Nghệ An",
+                text: "The _______ at the temple are bringing heart for peace and prosperity. (DEVOTION)",
+                choices: [
+                    { text: "devotees (những người sùng đạo, tín đồ)", key: "A" },
+                    { text: "devotions (sự thành tâm cầu nguyện)", key: "B" },
+                    { text: "devotedly (một cách tận tụy)", key: "C" },
+                    { text: "devoted (tận tụy)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Các tín đồ tại ngôi đền đang mang tấm lòng thành cầu nguyện cho hòa bình và thịnh vượng.",
+                    step2: "Đứng sau mạo từ 'The' và làm chủ ngữ trước cụm giới từ định vị 'at the temple' phối hợp hành động 'are bringing' bắt buộc phải là một danh từ chỉ người số nhiều.",
+                    step3: "Từ gốc 'DEVOTION' chuyển sang danh từ chỉ người sùng bái, tín đồ đi lễ chùa số nhiều là 'devotees'.",
+                    step4: "'devotions' là danh từ trừu tượng chỉ hành động cầu nguyện, không thể thực hiện hành động cầm mang tấm lòng đi kèm tobe số nhiều 'are'."
+                }
+            },
+            {
+                id: 90,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Nghệ An",
+                text: "A(n) _______ life, lack of physical activity, stressful jobs, and bad habits can influence one’s health in a very bad way. (PACE)",
+                choices: [
+                    { text: "fast-paced (nhịp sống nhanh, hối hả)", key: "A" },
+                    { text: "paced (bước đi)", key: "B" },
+                    { text: "pacing (sự tiến bước)", key: "C" },
+                    { text: "pacemaker (máy trợ tim)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Một cuộc sống hối hả, thiếu hoạt động thể chất, công việc căng thẳng và thói quen xấu có thể ảnh hưởng tiêu cực đến sức khỏe.",
+                    step2: "Vị trí đứng trước danh từ 'life' cần điền một tính từ ghép mô tả thực trạng lối sống có hại.",
+                    step3: "Cụm tính từ ghép kinh điển chỉ lối sống hiện đại xô bồ, hối hả, căng thẳng là 'fast-paced'.",
+                    step4: "Các từ còn lại không tạo thành ngữ nghĩa phù hợp làm tác nhân gây suy giảm sức khỏe."
+                }
+            },
+            {
+                id: 91,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Nghệ An",
+                text: "Officials urged caution in anticipation of catastrophic and _______ flooding in the days to come. (THREAT)",
+                choices: [
+                    { text: "life-threatening (đe dọa đến tính mạng)", key: "A" },
+                    { text: "threatening (mang tính đe dọa chung)", key: "B" },
+                    { text: "threatened (bị đe dọa)", key: "C" },
+                    { text: "threatener (kẻ đi đe dọa)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Các quan chức kêu gọi sự thận trọng trước dự báo về trận lũ lụt thảm khốc và đe dọa đến tính mạng trong những ngày tới.",
+                    step2: "Đứng trước danh từ hiện tượng thiên tai 'flooding' song hành tính từ mạnh 'catastrophic' cần một tính từ mức độ cao.",
+                    step3: "Cụm tính từ ghép chuyên dụng mô tả mức độ nguy hiểm chết người của thảm họa thiên nhiên là 'life-threatening'.",
+                    step4: "'threatening' chỉ mang nghĩa đe dọa chung chung, không lột tả hết tính khốc liệt của lũ lụt lớn."
+                }
+            },
+            {
+                id: 92,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Nghệ An",
+                text: "The store manager explained _______ that only certain items were sold at a discount. (APOLOGY)",
+                choices: [
+                    { text: "apologetically (một cách đầy hối lỗi, cáo lỗi)", key: "A" },
+                    { text: "apologetic (mang tính xin lỗi)", key: "B" },
+                    { text: "apologize (xin lỗi)", key: "C" },
+                    { text: "apologies (lời xin lỗi số nhiều)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Quản lý cửa hàng giải thích một cách đầy ái ngại/hối lỗi rằng chỉ có một số mặt hàng nhất định mới được giảm giá.",
+                    step2: "Vị trí đứng sau bổ nghĩa trực tiếp phương thức cho động từ phát ngôn 'explained' cần điền một trạng từ (adverb).",
+                    step3: "Từ gốc 'APOLOGY' đổi sang trạng từ đuôi '-ly' chuẩn chỉnh ngữ pháp là 'apologetically'.",
+                    step4: "'apologetic' là tính từ; 'apologize' là động từ nguyên mẫu."
+                }
+            },
+            {
+                id: 93,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Nghệ An",
+                text: "Women are traditionally supposed to be good at _______ . (TASK)",
+                choices: [
+                    { text: "multitasking (việc làm nhiều việc cùng lúc, đa nhiệm)", key: "A" },
+                    { text: "tasking (giao việc)", key: "B" },
+                    { text: "overtasked (bị quá tải công việc)", key: "C" },
+                    { text: "multitasker (người làm nhiều việc cùng lúc)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Phụ nữ theo truyền thống được cho là rất giỏi trong việc quán xuyến nhiều công việc cùng một lúc.",
+                    step2: "Đứng sau giới từ chỉ thế mạnh 'good at' cần một danh động từ (V-ing) chỉ hoạt động, kỹ năng.",
+                    step3: "Kỹ năng xử lý song song nhiều tác vụ cuộc sống, gia đình của người phụ nữ gọi là 'multitasking'.",
+                    step4: "'multitasker' là danh từ chỉ người không đi sau cấu trúc 'good at' hợp nghĩa bằng danh động từ chỉ kỹ năng hành động."
+                }
+            },
+            {
+                id: 94,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Nghệ An",
+                text: "The recent events _______ the need for a better understanding of the environment impact of biotechnology. (SCORE)",
+                choices: [
+                    { text: "underscored (đã nhấn mạnh, làm nổi bật)", key: "A" },
+                    { text: "score (ghi bàn/ghi điểm)", key: "B" },
+                    { text: "scoring (việc ghi điểm)", key: "C" },
+                    { text: "scoreboard (bảng tỉ số)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Các sự kiện gần đây đã nhấn mạnh nhu cầu cần có sự hiểu biết tốt hơn về tác động môi trường của công nghệ sinh học.",
+                    step2: "Vị trí trống đóng vai trò làm động từ chính của câu kể sau chủ ngữ số nhiều 'The recent events'.",
+                    step3: "Thêm tiền tố nhấn mạnh 'under-' vào gốc từ 'SCORE' tạo ra động từ 'underscore' (nhấn mạnh, gạch dưới tầm quan trọng). Vì kể về sự việc đã diễn ra ('recent events') nên động từ chia quá khứ đơn: 'underscored'.",
+                    step4: "Nếu dùng 'score' nguyên mẫu mang nghĩa ghi điểm thể thao hoàn toàn vô nghĩa văn cảnh nghị luận."
+                }
+            },
+            {
+                id: 95,
+                section: "Đề Thi Tuyển Sinh Vào Lớp 10 Chuyên Anh Tỉnh Nghệ An",
+                text: "_______ fines may be used for careless driving and other offenses. (SPOT)",
+                choices: [
+                    { text: "On-the-spot (Phạt tại chỗ, phạt nóng)", key: "A" },
+                    { text: "Spotless (Sạch bong không tì vết)", key: "B" },
+                    { text: "Spotted (Có đốm)", key: "C" },
+                    { text: "Spot-on (Chính xác hoàn toàn)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Hình thức phạt tiền tại chỗ có thể được áp dụng cho hành vi lái xe bất cẩn và các vi phạm khác.",
+                    step2: "Đứng đầu câu bổ nghĩa tính chất cho danh từ chủ ngữ số nhiều 'fines' (tiền phạt) cần một tính từ ghép.",
+                    step3: "Thuật ngữ luật giao thông hành chính chỉ hình thức xử lý vi phạm lập biên bản thu tiền ngay tại hiện trường là 'On-the-spot', tạo thành cụm 'On-the-spot fines'.",
+                    step4: "'Spotless' là sạch sẽ; 'Spot-on' là chuẩn xác không liên quan hành chính phạt vi phạm."
+                }
+            },
+
+            // CÂU 96 - 100
+            {
+                id: 96,
+                section: "Đề Thi Chuyên Anh Word Form Tổng Hợp",
+                text: "The golden autumn light provided the _______ for the painting. (INSPIRE)",
+                choices: [
+                    { text: "inspiration (nguồn cảm hứng)", key: "A" },
+                    { text: "inspirational (mang tính truyền cảm hứng)", key: "B" },
+                    { text: "inspired (đầy cảm hứng)", key: "C" },
+                    { text: "inspiring (gây cảm hứng)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Ánh sáng vàng của mùa thu đã mang lại nguồn cảm hứng lớn cho bức họa.",
+                    step2: "Đứng sau mạo từ 'the' và trước giới từ 'for' bắt buộc phải điền một danh từ.",
+                    step3: "Từ gốc động từ 'INSPIRE' chuyển sang danh từ chỉ nguồn cảm hứng nghệ thuật là 'inspiration'.",
+                    step4: "Các từ còn lại đều là các tính từ đuôi '-al', '-ed', '-ing' không làm chức năng tân ngữ đứng đây."
+                }
+            },
+            {
+                id: 97,
+                section: "Đề Thi Chuyên Anh Word Form Tổng Hợp",
+                text: "John enjoys working in general medicine, but he hopes to be able to _______ in the future. (SPECIAL)",
+                choices: [
+                    { text: "specialize (chuyên môn hóa, đi sâu chuyên ngành)", key: "A" },
+                    { text: "specialist (chuyên gia)", key: "B" },
+                    { text: "specialization (sự chuyên môn hóa)", key: "C" },
+                    { text: "specialty (đặc sản/chuyên môn)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: John thích làm việc trong ngành y đa khoa, nhưng anh ấy hy vọng có thể theo học chuyên ngành sâu trong tương lai.",
+                    step2: "Đứng sau cấu trúc chỉ khả năng hành động 'to be able to' bắt buộc phải là một động từ nguyên mẫu (V-bare).",
+                    step3: "Từ gốc 'SPECIAL' chuyển sang động từ kết hợp hậu tố '-ize' tạo thành 'specialize' (thường đi với giới từ *in*).",
+                    step4: "'specialist' và 'specialization' là các danh từ chỉ người hoặc sự việc."
+                }
+            },
+            {
+                id: 98,
+                section: "Đề Thi Chuyên Anh Word Form Tổng Hợp",
+                text: "The children listened _______ to the story because it was so interesting. (ATTENTION)",
+                choices: [
+                    { text: "attentively (một cách chăm chú, tập trung)", key: "A" },
+                    { text: "attentive (chăm chú)", key: "B" },
+                    { text: "attention (sự chú ý)", key: "C" },
+                    { text: "inattentively (một cách lơ là)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Lũ trẻ đã lắng nghe câu chuyện một cách vô cùng chăm chú bởi vì nó rất thú vị.",
+                    step2: "Vị trí đứng sau bổ nghĩa cách thức cho động từ hành động 'listened' cần một trạng từ.",
+                    step3: "Vì câu chuyện rất hay ('so interesting') nên trạng từ phải mang tính tích cực tập trung: 'attentively'.",
+                    step4: "'inattentively' mang nghĩa tiêu cực lơ là mất tập trung trái ngược lô-gic câu."
+                }
+            },
+            {
+                id: 99,
+                section: "Đề Thi Chuyên Anh Word Form Tổng Hợp",
+                text: "Diana is fun to be with but can be a bit _______ at times. We never know what kind of mood she is going to be in. (PREDICT)",
+                choices: [
+                    { text: "unpredictable (thay đổi thất thường, không đoán trước được)", key: "A" },
+                    { text: "predictable (có thể đoán trước)", key: "B" },
+                    { text: "prediction (sự dự đoán)", key: "C" },
+                    { text: "predictably (một cách đoán trước được)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Ở bên cạnh Diana rất vui nhưng đôi khi cô ấy hơi thất thường. Chúng tôi không bao giờ biết tâm trạng cô ấy sẽ ra sao.",
+                    step2: "Sau cấu trúc giảm nhẹ mức độ 'can be a bit...' cần một tính từ chỉ nhược điểm tính cách.",
+                    step3: "Vế sau giải thích 'never know' (không bao giờ biết trước được) suy ra cô ấy có tính khí rất khó đoán, chọn tính từ có tiền tố phủ định: 'unpredictable'.",
+                    step4: "'predictable' mang nghĩa dễ đoán ngược hoàn toàn thực tế mô tả văn cảnh câu."
+                }
+            },
+            {
+                id: 100,
+                section: "Đề Thi Chuyên Anh Word Form Tổng Hợp",
+                text: "Environmental pollution brings extreme _______ to man’s naturally beautiful world. (UGLY)",
+                choices: [
+                    { text: "ugliness (sự xấu xí, tàn phá cảnh quan)", key: "A" },
+                    { text: "uglier (xấu xí hơn)", key: "B" },
+                    { text: "ugly (xấu xí)", key: "C" },
+                    { text: "uglification (sự làm cho xấu đi)", key: "D" }
+                ],
+                correct: "A",
+                explanation: {
+                    step1: "Dịch nghĩa: Ô nhiễm môi trường mang lại sự xấu xí ghê gớm cho thế giới vốn dĩ tươi đẹp tự nhiên của con người.",
+                    step2: "Đứng sau tính từ chỉ mức độ dữ dội 'extreme' làm tân ngữ cho động từ 'brings' cần một danh từ.",
+                    step3: "Từ gốc tính từ 'UGLY' biến đổi y dài thành i ngắn và thêm hậu tố tính chất '-ness' tạo thành danh từ 'ugliness'.",
+                    step4: "'ugly' là tính từ không đứng làm tân ngữ trực tiếp sau tính từ bổ trợ khác đứng độc lập."
+                }
+            }
+        ];
+
+        let trackedStudentAnswers = {};
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playDingSound() {
+            try {
+                const now = audioCtx.currentTime;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(523.25, now); // C5
+                osc.frequency.setValueAtTime(659.25, now + 0.08); // E5
+                osc.frequency.setValueAtTime(783.99, now + 0.16); // G5
+                osc.frequency.setValueAtTime(1046.50, now + 0.24); // C6
+                gain.gain.setValueAtTime(0, now);
+                gain.gain.linearRampToValueAtTime(0.22, now + 0.05);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+                osc.connect(gain); gain.connect(audioCtx.destination);
+                osc.start(now); osc.stop(now + 0.5);
+            } catch(e) {}
+        }
+
+        function playBuzzSound() {
+            try {
+                const now = audioCtx.currentTime;
+                const frequencies = [392.00, 349.23, 261.63]; // Âm hạ bậc "Téo teo tèo"
+                frequencies.forEach((freq, idx) => {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(freq, now + (idx * 0.12));
+                    gain.gain.setValueAtTime(0, now + (idx * 0.12));
+                    gain.gain.linearRampToValueAtTime(0.18, now + (idx * 0.12) + 0.02);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + (idx * 0.12) + 0.14);
+                    osc.connect(gain); gain.connect(audioCtx.destination);
+                    osc.start(now + (idx * 0.12)); osc.stop(now + (idx * 0.12) + 0.14);
+                });
+            } catch(e) {}
+        }
+
+        function runConfettiExplosion() {
+            const canvas = document.getElementById('canvas-confetti-layer');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            
+            let particles = [];
+            const paletteColors = ['#FFC107', '#FF5722', '#E91E63', '#9C27B0', '#00C9A7', '#00D26A', '#8854C0'];
+            
+            for (let i = 0; i < 75; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    radius: Math.random() * 4 + 4,
+                    density: Math.random() * canvas.height,
+                    color: paletteColors[Math.floor(Math.random() * paletteColors.length)],
+                    tilt: Math.random() * 10 - 5,
+                    tiltIncremental: Math.random() * 0.05 + 0.02,
+                    angle: 0
+                });
+            }
+            
+            function animateConfettiFrame() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let continueAnimation = false;
+                particles.forEach((p) => {
+                    p.angle += p.tiltIncremental;
+                    p.y += (Math.cos(p.density) + 3 + p.radius / 2) / 1.8;
+                    p.x += Math.sin(p.angle);
+                    if (p.y <= canvas.height) continueAnimation = true;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color;
+                    ctx.fill();
+                });
+                if (continueAnimation) requestAnimationFrame(animateConfettiFrame);
+            }
+            animateConfettiFrame();
+        }
+
+        function shuffleArrayChoices(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                const temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+            return array;
+        }
+
+        function buildAndRenderInterface() {
+            const quizTarget = document.getElementById('quiz-dynamic-render-target');
+            quizTarget.innerHTML = '';
+            
+            let currentSectionTitle = "";
+
+            questionsDatabase.forEach((q, idx) => {
+                if (currentSectionTitle !== q.section) {
+                    currentSectionTitle = q.section;
+                    const headline = document.createElement('div');
+                    headline.className = 'section-title-banner';
+                    headline.innerText = currentSectionTitle;
+                    quizTarget.appendChild(headline);
+                }
+
+                const cardNode = document.createElement('div');
+                cardNode.className = 'quiz-card';
+                cardNode.id = `card-wrapper-id-${q.id}`;
+                
+                let shuffledChoices = [...q.choices];
+                shuffleArrayChoices(shuffledChoices);
+                
+                let choicesHtmlContent = '';
+                shuffledChoices.forEach(choice => {
+                    choicesHtmlContent += `
+                        <button class="choice-btn" id="btn-choice-item-${q.id}-${choice.key}" onclick="evaluateUserChoice(${q.id}, '${choice.key}', '${q.correct}')">
+                            <span class="choice-prefix">${choice.key}</span>
+                            <span class="choice-body-text">${choice.text}</span>
+                        </button>
+                    `;
+                });
+
+                cardNode.innerHTML = `
+                    <div class="question-header">
+                        <div class="question-number">${idx + 51}</div>
+                        <div class="question-text">${q.text}</div>
+                    </div>
+                    <div class="choices-grid" id="choices-grid-box-id-${q.id}">
+                        ${choicesHtmlContent}
+                    </div>
+                    
+                    <div class="explanation-box" id="explanation-box-view-id-${q.id}">
+                        <div class="explanation-title">💡 GIẢI THÍCH CHI TIẾT TỪ CÔ LÊ HẰNG:</div>
+                        <div class="explanation-step">
+                            <div class="step-heading">🔹 Bước 1: Dịch nghĩa câu hỏi gốc</div>
+                            <div>${q.explanation.step1}</div>
+                        </div>
+                        <div class="explanation-step">
+                            <div class="step-heading">🔹 Bước 2: Xác định từ loại cần điền</div>
+                            <div>${q.explanation.step2}</div>
+                        </div>
+                        <div class="explanation-step">
+                            <div class="step-heading">🔹 Bước 3: Tại sao đáp án này ĐÚNG?</div>
+                            <div style="font-weight: 700; color: #00A955;">${q.explanation.step3}</div>
+                        </div>
+                        <div class="explanation-step">
+                            <div class="step-heading">🔹 Bước 4: Tại sao các phương án khác SAI?</div>
+                            <div>${q.explanation.step4}</div>
+                        </div>
+                    </div>
+                `;
+                quizTarget.appendChild(cardNode);
+            });
+        }
+
+        function evaluateUserChoice(questionId, chosenKey, correctKey) {
+            if (trackedStudentAnswers[questionId] !== undefined) return;
+            
+            trackedStudentAnswers[questionId] = chosenKey;
+            const targetBtnNode = document.getElementById(`btn-choice-item-${questionId}-${chosenKey}`);
+            const correctBtnNode = document.getElementById(`btn-choice-item-${questionId}-${correctKey}`);
+            const parentCardNode = document.getElementById(`card-wrapper-id-${questionId}`);
+            
+            if (chosenKey === correctKey) {
+                targetBtnNode.classList.add('correct-state');
+                playDingSound();
+                runConfettiExplosion();
+            } else {
+                targetBtnNode.classList.add('wrong-state');
+                if (correctBtnNode) correctBtnNode.classList.add('correct-state');
+                parentCardNode.classList.add('shake-animation');
+                playBuzzSound();
+                setTimeout(() => parentCardNode.classList.remove('shake-animation'), 450);
+            }
+
+            const childrenButtons = document.getElementById(`choices-grid-box-id-${questionId}`).getElementsByClassName('choice-btn');
+            for (let btn of childrenButtons) { btn.disabled = true; }
+
+            document.getElementById(`explanation-box-view-id-${questionId}`).style.display = 'block';
+        }
+
+        function processExamGrading() {
+            let correctCount = 0;
+            const totalQuestionsCount = questionsDatabase.length;
+            
+            questionsDatabase.forEach(q => {
+                if (trackedStudentAnswers[q.id] === q.correct) {
+                    correctCount++;
+                }
+            });
+
+            const rawSuccessPercentage = (correctCount / totalQuestionsCount) * 100;
+            const scoreDisplaySlot = document.getElementById('score-counter-slot');
+            const commentDisplaySlot = document.getElementById('teacher-feedback-slot');
+
+            scoreDisplaySlot.innerText = `${correctCount} / ${totalQuestionsCount}`;
+
+            if (rawSuccessPercentage < 50) {
+                commentDisplaySlot.innerText = "Điểm chưa cao lắm, con nhớ đọc kỹ 4 bước giải thích của từng câu để học thêm từ vựng mới và làm lại nhé! Cô tin con sẽ làm tốt hơn! 💕";
+            } else if (rawSuccessPercentage >= 50 && rawSuccessPercentage <= 85) {
+                commentDisplaySlot.innerText = "Con làm bài rất khá! Hãy rà soát lại các câu làm sai, ghi lại cấu trúc vào vở để bứt phá điểm tuyệt đối lần sau nha! 🌟";
+            } else {
+                commentDisplaySlot.innerText = "Xuất sắc quá! Con có nền tảng từ vựng Chuyên Anh cực kỳ vững chắc. Hãy tiếp tục phát huy phong độ đỉnh cao này con nhé! 🎉💎";
+            }
+
+            document.getElementById('result-summary-popup').classList.add('active');
+        }
+
+        function resetAndRestartQuiz() {
+            document.getElementById('result-summary-popup').classList.remove('active');
+            trackedStudentAnswers = {};
+            buildAndRenderInterface();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.onload = () => {
+            buildAndRenderInterface();
+        };
+    </script>
+</body>
+</html>
